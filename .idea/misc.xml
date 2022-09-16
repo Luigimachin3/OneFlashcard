@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/feble/AndroidStudioProjects/OneFlashcard/app/src/main/res/layout/activity_main.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/feble/AndroidStudioProjects/OneFlashcard/app/src/main/res/drawable/card_background.xml" value="0.2555" />
+        <entry key="..\:/Users/feble/AndroidStudioProjects/OneFlashcard/app/src/main/res/drawable/ic_iconmonstr_eye_lined.xml" value="0.243" />
+        <entry key="..\:/Users/feble/AndroidStudioProjects/OneFlashcard/app/src/main/res/drawable/ic_iconmonstr_eye_off_lined.xml" value="0.159" />
+        <entry key="..\:/Users/feble/AndroidStudioProjects/OneFlashcard/app/src/main/res/drawable/show_icon.xml" value="0.159" />
+        <entry key="..\:/Users/feble/AndroidStudioProjects/OneFlashcard/app/src/main/res/drawable/solid_color_shape.xml" value="0.2545" />
+        <entry key="..\:/Users/feble/AndroidStudioProjects/OneFlashcard/app/src/main/res/layout/activity_main.xml" value="0.1" />
       </map>
     </option>
   </component>
