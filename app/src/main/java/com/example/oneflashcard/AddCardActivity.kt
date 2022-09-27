@@ -13,25 +13,25 @@ class AddCardActivity : AppCompatActivity() {
 
 
 findViewById<ImageView>(R.id.myCancelButton).setOnClickListener {
-finish()
+
+    findViewById<EditText>(R.id.editTextField).text.toString()
+
+    val data = Intent()
+
+    data.putExtra(
+        "string1",
+        "some string"
+    )
+
+    data.putExtra(
+        "string2",
+        "another string"
+    )
+    setResult(RESULT_OK, data)
+
+    finish()
 }
-//        findViewById<EditText>(R.id.editTextField).text.toString()
-//
-//        val data = Intent()
-//
-//        data.putExtra(
-//            "string1",
-//            "some string"
-//        )
-//
-//        data.putExtra(
-//            "string2",
-//            "another string"
-//        )
-//
-//        setResult(RESULT_OK, data)
-//
-//        finish()
+
     }
 }
 

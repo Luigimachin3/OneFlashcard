@@ -27,22 +27,28 @@ class MainActivity : AppCompatActivity() {
         val isShowingAnswers2 = findViewById<ImageView>(R.id.toggle_choices_blind)
 
 
+        val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        val data: Intent? = result.data
+        }
+
 
             findViewById<ImageView>(R.id.myPlusButton).setOnClickListener {
                 val intent = Intent(this, AddCardActivity::class.java)
-                startActivity(intent)
+                resultLauncher.launch(intent)
             }
-//            val data: Intent? = result.data
-//            if(data != null){
-//                val string1 = data.getStringExtra("string1")
-//                val string2 = data.getStringExtra("string2")
+
+
+//    if (data != null) {
+//        val string1 = data.getStringExtra("string1")
+//        val string2 = data.getStringExtra("string2")
 //
-//                Log.i("MainActivity", "string1: $string1")
-//                Log.i("MainActivity", "string1: $string2")
-//            }else {
-//                Log.i("MainActivity", "Returned null data from AddCardActivity")
-//            }
-//        }
+//        Log.i("MainActivity", "string1: $string1")
+//        Log.i("MainActivity", "string2: $string2")
+//    }else {
+//        Log.i("MainActivity", "Returned null data from AddCardActivity")
+//    }
+//
+//
 
 
 
@@ -92,12 +98,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
 
+    }
 
-
-
-   }
-}
 
 
 
