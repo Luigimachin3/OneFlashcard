@@ -1,10 +1,13 @@
 package com.example.oneflashcard
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +25,35 @@ class MainActivity : AppCompatActivity() {
 
         val isShowingAnswers = findViewById<ImageView>(R.id.toggle_choices_visibility)
         val isShowingAnswers2 = findViewById<ImageView>(R.id.toggle_choices_blind)
+
+
+
+            findViewById<ImageView>(R.id.myPlusButton).setOnClickListener {
+                val intent = Intent(this, AddCardActivity::class.java)
+                startActivity(intent)
+            }
+//            val data: Intent? = result.data
+//            if(data != null){
+//                val string1 = data.getStringExtra("string1")
+//                val string2 = data.getStringExtra("string2")
+//
+//                Log.i("MainActivity", "string1: $string1")
+//                Log.i("MainActivity", "string1: $string2")
+//            }else {
+//                Log.i("MainActivity", "Returned null data from AddCardActivity")
+//            }
+//        }
+
+
+
+
+
+
+
+
+
+
+
 
         flashcardQuestion.setOnClickListener {
             flashcardQuestion.visibility = View.INVISIBLE
@@ -57,14 +89,15 @@ class MainActivity : AppCompatActivity() {
                 textView1.visibility = View.VISIBLE
                 textView2.visibility = View.VISIBLE
                 textView3.visibility = View.VISIBLE
-
             }
         }
 
-    }
+
+
+
+
+   }
 }
-
-
 
 
 
