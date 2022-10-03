@@ -7,10 +7,14 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.google.android.material.snackbar.Snackbar
 
 
 class MainActivity : AppCompatActivity() {
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,47 +27,68 @@ class MainActivity : AppCompatActivity() {
         val textView2 = findViewById<TextView>(R.id.secondChoice)
         val textView3 = findViewById<TextView>(R.id.thirdChoice)
 
-        val isShowingAnswers = findViewById<ImageView>(R.id.toggle_choices_visibility)
-        val isShowingAnswers2 = findViewById<ImageView>(R.id.toggle_choices_blind)
+        textView1.visibility  = View.INVISIBLE
+        textView2.visibility  = View.INVISIBLE
+        textView3.visibility  = View.INVISIBLE
 
+        var shouldShowAnswers = true
 
-        val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        val data: Intent? = result.data
+        val eyeVisible = findViewById<ImageView>(R.id.toggle_choices_visibility)
+        eyeVisible.setOnClickListener {
+            if(shouldShowAnswers) {
+                eyeVisible.setImageResource(R.drawable.ic_iconmonstr_eye_off_lined)
+                textView1.visibility = View.VISIBLE
+                textView2.visibility = View.VISIBLE
+                textView3.visibility = View.VISIBLE
+                shouldShowAnswers = false
+            }else{
+                eyeVisible.setImageResource(R.drawable.ic_iconmonstr_eye_lined)
+                textView1.visibility = View.INVISIBLE
+                textView2.visibility = View.INVISIBLE
+                textView3.visibility = View.INVISIBLE
+                shouldShowAnswers = true
+            }
+
         }
 
 
-            findViewById<ImageView>(R.id.myPlusButton).setOnClickListener {
+
+
+        val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                result ->
+
+            val data: Intent? = result.data
+            //TODO: extract data
+            if (data != null) {
+                val questionString = data.getStringExtra("QUESTION_KEY")
+                val answerString = data.getStringExtra("ANSWER_KEY")
+
+                flashcardQuestion.text = questionString
+                flashcardAnswer.text = answerString
+
+                Log.i("MainActivity", "question: $questionString")
+                Log.i("MainActivity", "answer: $answerString")
+                 }else {
+                     Log.i("MainActivity", "Returned null data from AddCardActivity")
+                }
+             }
+
+
+            val addQuestionButton = findViewById<ImageView>(R.id.myPlusButton)
+            addQuestionButton.setOnClickListener {
                 val intent = Intent(this, AddCardActivity::class.java)
                 resultLauncher.launch(intent)
             }
 
-
-//    if (data != null) {
-//        val string1 = data.getStringExtra("string1")
-//        val string2 = data.getStringExtra("string2")
-//
-//        Log.i("MainActivity", "string1: $string1")
-//        Log.i("MainActivity", "string2: $string2")
-//    }else {
-//        Log.i("MainActivity", "Returned null data from AddCardActivity")
-//    }
-//
-//
-
-
-
-
-
-
-
-
-
-
-
-
         flashcardQuestion.setOnClickListener {
             flashcardQuestion.visibility = View.INVISIBLE
             flashcardAnswer.visibility = View.VISIBLE
+
+            Toast.makeText(this, "Question button was clicked", Toast.LENGTH_SHORT).show()
+            Snackbar.make(flashcardQuestion, "Question button was clicked",
+                Snackbar.LENGTH_SHORT).show()
+
+            Log.i("Luis", "Question button was clicked")
         }
 
         flashcardAnswer.setOnClickListener {
@@ -81,26 +106,15 @@ class MainActivity : AppCompatActivity() {
 
         textView3.setOnClickListener {
             textView3.setBackgroundColor(resources.getColor(R.color.my_green_color))
+            textView2.setBackgroundColor(resources.getColor(R.color.my_red_color))
+            textView1.setBackgroundColor(resources.getColor(R.color.my_red_color))
         }
 
-
-        isShowingAnswers.setOnClickListener {
-            isShowingAnswers.setImageResource(R.drawable.ic_iconmonstr_eye_lined)
-            textView1.visibility = View.INVISIBLE
-            textView2.visibility = View.INVISIBLE
-            textView3.visibility = View.INVISIBLE
-
-            isShowingAnswers2.setOnClickListener {
-                isShowingAnswers2.setImageResource(R.drawable.ic_iconmonstr_eye_off_lined)
-                textView1.visibility = View.VISIBLE
-                textView2.visibility = View.VISIBLE
-                textView3.visibility = View.VISIBLE
-            }
         }
 
     }
 
-    }
+
 
 
 

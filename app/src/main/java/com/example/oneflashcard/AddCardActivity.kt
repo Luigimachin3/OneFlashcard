@@ -11,27 +11,31 @@ class AddCardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_card)
 
+        val questionEditText = findViewById<EditText>(R.id.editTextField)
+        val answerEditText = findViewById<EditText>(R.id.editTextFieldAnswer)
 
-findViewById<ImageView>(R.id.myCancelButton).setOnClickListener {
+        val saveButton = findViewById<ImageView>(R.id.mySaveButton)
+        saveButton.setOnClickListener {
+            val questionString = questionEditText.text.toString()
+            val answerString = answerEditText.text.toString()
 
-    findViewById<EditText>(R.id.editTextField).text.toString()
+            val data = Intent()
+            data.putExtra("QUESTION_KEY", questionString)
+            data.putExtra("ANSWER_KEY", answerString)
 
-    val data = Intent()
+            setResult(RESULT_OK, data)
+            finish()
+        }
 
-    data.putExtra(
-        "string1",
-        "some string"
-    )
+        val cancelButton = findViewById<ImageView>(R.id.myCancelButton)
+        cancelButton.setOnClickListener {
+            finish()
+        }
 
-    data.putExtra(
-        "string2",
-        "another string"
-    )
-    setResult(RESULT_OK, data)
 
-    finish()
-}
 
-    }
-}
+        }
+
+
+        }
 
