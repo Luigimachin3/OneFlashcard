@@ -88,4 +88,16 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="15dp"/>
 
+    <ImageView
+        android:src="@drawable/iconmonstr_angel_right_thin"
+        android:id="@+id/myNextButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+
+        />
+
+
 </RelativeLayout>
