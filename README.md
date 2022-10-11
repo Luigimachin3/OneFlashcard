@@ -7,7 +7,7 @@ This is OneFlashcard
 
 ### App Walk-though
 
-<img src="http://g.recordit.co/u3ORl4nCIB.gif" width=200><br>
+<img src="http://g.recordit.co/NoHBLQpFCb.gif" width=200><br>
 
 ## Required
 - [x] User can create a card and still see their created card when the app is relaunched.
